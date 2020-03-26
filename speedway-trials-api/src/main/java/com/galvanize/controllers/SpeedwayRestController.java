@@ -31,4 +31,7 @@ public class SpeedwayRestController {
         return speedwayService.findAllDrivers();
     }
 
+    @PutMapping("/driver/{id}")
+    public Driver updateDriver(@PathVariable Long id, @RequestBody Driver driver){ return speedwayService.update(driver, id);}
+
 }

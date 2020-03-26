@@ -32,7 +32,7 @@ public class SpeedwayService {
         return driverRepository.findAll();
     }
 
-    public Driver update(Long id, Driver expected) {
+    public Driver update(Driver expected, Long id) {
         Driver databaseDriver = findDriverById(id);
         databaseDriver.update(expected);
         return driverRepository.save(databaseDriver);
