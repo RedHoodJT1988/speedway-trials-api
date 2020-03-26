@@ -54,12 +54,12 @@ public class SpeedwayServiceTest {
         assertEquals(drivers, speedwayService.findAllDrivers());
     }
 
-//    @Test
-//    void updateDriverById(){
-//        SpeedwayService speedwayService = new SpeedwayService(driverRepository, carRepository, raceRepository);
-//        Driver expected = speedwayService.createDriver(new Driver("Paul", "Bethany", 55, "Vision"));
-//        expected.setLastName("Blart");
-//        speedwayService.update(expected.getId(), expected);
-//        assertEquals(expected, speedwayService.findDriverById(expected.getId()));
-//    }
+    @Test
+    void updateDriverById(){
+        SpeedwayService speedwayService = new SpeedwayService(driverRepository, carRepository, raceRepository);
+        Driver expected = speedwayService.createDriver(new Driver("Paul", "Bethany", 55, "Vision"));
+        expected.setLastName("Blart");
+        speedwayService.update(expected.getId(), expected);
+        assertEquals(expected, speedwayService.findDriverById(expected.getId()));
+    }
 }
