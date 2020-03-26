@@ -2,6 +2,7 @@ package com.galvanize.entities;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name="drivers")
@@ -106,5 +107,36 @@ public class Driver {
 
     public void setLoss(int loss) {
         this.loss = loss;
+    }
+
+    public void update(Driver expected) {
+        if(expected.getId()!=0){this.setId(expected.getId());}
+        if(expected.getAge()!=0){this.setAge(expected.getAge());}
+        if(expected.getCar()!=0){this.setCar(expected.getCar());}
+        if(expected.getWin()!=0){this.setWin(expected.getWin());}
+        if(expected.getLoss()!=0){this.setLoss(expected.getLoss());}
+        if(expected.getFirstName()!=null){this.setFirstName(expected.getFirstName());}
+        if(expected.getLastName()!=null){this.setLastName(expected.getLastName());}
+        if(expected.getNickName()!=null){this.setNickName(expected.getNickName());}
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Driver driver = (Driver) o;
+        return getAge() == driver.getAge() &&
+                carId == driver.carId &&
+                getWin() == driver.getWin() &&
+                getLoss() == driver.getLoss() &&
+                Objects.equals(getId(), driver.getId()) &&
+                Objects.equals(getFirstName(), driver.getFirstName()) &&
+                Objects.equals(getLastName(), driver.getLastName()) &&
+                Objects.equals(getNickName(), driver.getNickName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getFirstName(), getLastName(), getAge(), getNickName(), carId, getWin(), getLoss());
     }
 }

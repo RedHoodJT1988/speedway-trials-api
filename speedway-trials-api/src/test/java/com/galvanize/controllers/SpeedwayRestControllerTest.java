@@ -67,4 +67,17 @@ class SpeedwayRestControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isNotEmpty());
     }
+
+//    @Test
+//    void updateDriverById() throws Exception{
+//        Driver expected = new Driver();
+//        String json = objectMapper.writeValueAsString(expected);
+//        expected.setId(1L);
+//
+//        when(speedwayService.update(1L,ArgumentMatchers.any(Driver.class))).thenReturn(expected);
+//
+//        mockMvc.perform(put("/api/speedway/driver/1").content(json).contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$.id").value(expected.getId()));
+//    }
 }

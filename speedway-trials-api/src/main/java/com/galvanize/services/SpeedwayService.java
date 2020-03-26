@@ -31,4 +31,7 @@ public class SpeedwayService {
     public List<Driver> findAllDrivers() {
         return driverRepository.findAll();
     }
+
+    public void update(Long id, Driver expected) {
+    }
 }

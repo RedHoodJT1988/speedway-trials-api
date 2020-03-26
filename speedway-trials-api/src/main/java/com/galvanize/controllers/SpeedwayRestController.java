@@ -12,7 +12,6 @@ import java.util.List;
 public class SpeedwayRestController {
     SpeedwayService speedwayService;
 
-    @Autowired
     public SpeedwayRestController(SpeedwayService speedwayService) {
         this.speedwayService = speedwayService;
     }
