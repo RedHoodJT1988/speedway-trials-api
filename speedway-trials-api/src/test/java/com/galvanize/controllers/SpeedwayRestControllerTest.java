@@ -15,6 +15,9 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import javax.transaction.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.when;
@@ -52,5 +55,16 @@ class SpeedwayRestControllerTest {
         mockMvc.perform(get("/api/speedway/driver/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(driver.getId()));
+    }
+
+    @Test
+    void findAllDrivers() throws Exception {
+        List<Driver> drivers = new ArrayList<>();
+        Driver driver = new Driver();
+        drivers.add(driver);
+        when(speedwayService.findAllDrivers()).thenReturn(drivers);
+        mockMvc.perform(get("/api/speedway/driver"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isNotEmpty());
     }
 }

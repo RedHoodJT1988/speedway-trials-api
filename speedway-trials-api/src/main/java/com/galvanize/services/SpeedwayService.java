@@ -6,6 +6,8 @@ import com.galvanize.repositories.DriverRepository;
 import com.galvanize.repositories.RaceRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SpeedwayService {
     RaceRepository raceRepository;
@@ -24,5 +26,9 @@ public class SpeedwayService {
 
     public Driver findDriverById(long l) {
         return driverRepository.findById(l).get();
+    }
+
+    public List<Driver> findAllDrivers() {
+        return driverRepository.findAll();
     }
 }

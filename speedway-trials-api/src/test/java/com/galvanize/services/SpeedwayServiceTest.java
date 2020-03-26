@@ -10,6 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -40,6 +43,15 @@ public class SpeedwayServiceTest {
         SpeedwayService speedwayService = new SpeedwayService(driverRepository, carRepository, raceRepository);
         Driver expected = speedwayService.createDriver(new Driver("Paul", "Bethany", 55, "Vision"));
         assertEquals(expected, speedwayService.findDriverById(expected.getId()));
+    }
+
+    @Test
+    void findAllDrivers() {
+        SpeedwayService speedwayService = new SpeedwayService(driverRepository, carRepository, raceRepository);
+        Driver expected = speedwayService.createDriver(new Driver("Paul", "Bethany", 55, "Vision"));
+        List<Driver> drivers = new ArrayList<>();
+        drivers.add(expected);
+        assertEquals(drivers, speedwayService.findAllDrivers());
     }
 
 
