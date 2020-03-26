@@ -39,7 +39,7 @@ class SpeedwayRestControllerTest {
         String json = objectMapper.writeValueAsString(driver);
         driver.setId(1L);
         when(speedwayService.createDriver(ArgumentMatchers.any(Driver.class))).thenReturn(driver);
-        mockMvc.perform(post("api/service/driver").content(json).contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(post("/api/speedway/driver").content(json).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(driver.getId()));
     }
