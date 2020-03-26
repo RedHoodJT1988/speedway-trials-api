@@ -5,6 +5,8 @@ import com.galvanize.services.SpeedwayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/speedway")
 public class SpeedwayRestController {
@@ -23,6 +25,11 @@ public class SpeedwayRestController {
     @GetMapping("/driver/{id}")
     public Driver findDriver(@PathVariable Long id) {
         return speedwayService.findDriverById(id);
+    }
+
+    @GetMapping("/driver")
+    public List<Driver> findAllDrivers() {
+        return speedwayService.findAllDrivers();
     }
 
 }
