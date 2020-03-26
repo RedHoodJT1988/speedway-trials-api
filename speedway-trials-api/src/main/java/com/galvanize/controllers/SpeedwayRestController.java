@@ -20,4 +20,9 @@ public class SpeedwayRestController {
         return speedwayService.createDriver(driver);
     }
 
+    @GetMapping("/driver/{id}")
+    public Driver findDriver(@PathVariable Long id) {
+        return speedwayService.findDriverById(id);
+    }
+
 }
