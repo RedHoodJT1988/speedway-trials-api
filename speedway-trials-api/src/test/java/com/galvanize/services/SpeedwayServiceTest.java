@@ -35,5 +35,12 @@ public class SpeedwayServiceTest {
         assertEquals(driver, actual);
     }
 
+    @Test
+    void findDriverById() {
+        SpeedwayService speedwayService = new SpeedwayService(driverRepository, carRepository, raceRepository);
+        Driver expected = speedwayService.createDriver(new Driver("Paul", "Bethany", 55, "Vision"));
+        assertEquals(expected, speedwayService.findDriverById(expected.getId()));
+    }
+
 
 }

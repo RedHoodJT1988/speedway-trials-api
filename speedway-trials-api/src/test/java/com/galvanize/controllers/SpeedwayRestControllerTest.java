@@ -43,4 +43,14 @@ class SpeedwayRestControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(driver.getId()));
     }
+
+    @Test
+    void findDriver() throws Exception {
+        Driver driver = new Driver();
+        driver.setId(1L);
+        when(speedwayService.findDriverById(1L)).thenReturn(driver);
+        mockMvc.perform(get("/api/speedway/driver/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(driver.getId()));
+    }
 }

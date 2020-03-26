@@ -21,4 +21,8 @@ public class SpeedwayService {
     public Driver createDriver(Driver driver) {
         return driverRepository.save(driver);
     }
+
+    public Driver findDriverById(long l) {
+        return driverRepository.findById(l).get();
+    }
 }
