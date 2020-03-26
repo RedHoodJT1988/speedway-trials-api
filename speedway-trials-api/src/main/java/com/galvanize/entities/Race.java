@@ -20,13 +20,13 @@ public class Race {
     String bestTime;
     @Column
     Long winnerId;
-    @ManyToOne
-    Driver participants;
+    @ManyToMany
+    List<Driver> participants;
 
     public Race() {
     }
 
-    public Race(Long id, String name, String category, Date date, String bestTime, Long winnerId, Driver participants) {
+    public Race(Long id, String name, String category, Date date, String bestTime, Long winnerId, List<Driver> participants) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -84,11 +84,11 @@ public class Race {
         this.winnerId = winnerId;
     }
 
-    public Driver getParticipants() {
+    public List<Driver> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(Driver participants) {
+    public void setParticipants(List<Driver> participants) {
         this.participants = participants;
     }
 }
