@@ -80,4 +80,11 @@ class SpeedwayRestControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(expected.getId()));
     }
+
+//    @Test
+//    void deleteDriverById() throws Exception{
+//        when(speedwayService.deleteById(ArgumentMatchers.anyLong()));
+//        mockMvc.perform(delete("/api/speed/driver/1"))
+//                .andExpect(status().isOk());
+//    }
 }

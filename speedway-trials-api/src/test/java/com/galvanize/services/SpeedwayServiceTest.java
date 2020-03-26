@@ -62,4 +62,12 @@ public class SpeedwayServiceTest {
         speedwayService.update(expected, expected.getId());
         assertEquals(expected, speedwayService.findDriverById(expected.getId()));
     }
+
+    @Test
+    void deleteDriverById(){
+        SpeedwayService speedwayService = new SpeedwayService(driverRepository, carRepository, raceRepository);
+        Driver expected = speedwayService.createDriver(new Driver("Paul", "Bethany", 55, "Vision"));
+        speedwayService.deleteById(expected.getId());
+        assertNull(speedwayService.findDriverById(expected.getId()));
+    }
 }

@@ -25,7 +25,7 @@ public class SpeedwayService {
     }
 
     public Driver findDriverById(long l) {
-        return driverRepository.findById(l).get();
+        return driverRepository.findById(l).orElse(null);
     }
 
     public List<Driver> findAllDrivers() {
@@ -36,5 +36,9 @@ public class SpeedwayService {
         Driver databaseDriver = findDriverById(id);
         databaseDriver.update(expected);
         return driverRepository.save(databaseDriver);
+    }
+
+    public void deleteById(Long id) {
+        driverRepository.deleteById(id);
     }
 }
