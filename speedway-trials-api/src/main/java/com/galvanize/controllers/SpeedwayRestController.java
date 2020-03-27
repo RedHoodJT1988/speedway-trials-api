@@ -46,4 +46,9 @@ public class SpeedwayRestController {
     public Car findCarById(@PathVariable Long id){
         return speedwayService.findCarById(id);
     }
+
+    @GetMapping("/car")
+    public List<Car> findAllCars(){
+        return speedwayService.findAllCars();
+    }
 }
