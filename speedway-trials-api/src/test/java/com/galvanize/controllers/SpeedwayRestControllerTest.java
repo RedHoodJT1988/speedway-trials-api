@@ -73,7 +73,7 @@ class SpeedwayRestControllerTest {
         String json = objectMapper.writeValueAsString(expected);
         expected.setId(1L);
 
-        when(speedwayService.updateDriver(ArgumentMatchers.any(Driver.class),ArgumentMatchers.anyLong())).thenReturn(expected);
+        when(speedwayService.updateDriverById(ArgumentMatchers.any(Driver.class),ArgumentMatchers.anyLong())).thenReturn(expected);
 
         mockMvc.perform(put("/api/speedway/driver/1").content(json).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -119,5 +119,16 @@ class SpeedwayRestControllerTest {
         mockMvc.perform(get("/api/speedway/car/"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value(expected.getId()));
+    }
+
+    @Test
+    void updateCarById() throws Exception{
+        Car expected = new Car();
+        String json = objectMapper.writeValueAsString(expected);
+        expected.setId(1L);
+        when(speedwayService.updateCarById(ArgumentMatchers.anyLong(), ArgumentMatchers.any(Car.class))).thenReturn(expected);
+        mockMvc.perform(put("/api/speedway/car/1").contentType(MediaType.APPLICATION_JSON).content(json))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(expected.getId()));
     }
 }

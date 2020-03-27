@@ -33,7 +33,7 @@ public class SpeedwayService {
         return driverRepository.findAll();
     }
 
-    public Driver updateDriver(Driver expected, Long id) {
+    public Driver updateDriverById(Driver expected, Long id) {
         Driver databaseDriver = findDriverById(id);
         databaseDriver.update(expected);
         return driverRepository.save(databaseDriver);
@@ -53,5 +53,9 @@ public class SpeedwayService {
 
     public List<Car> findAllCars() {
         return carRepository.findAll();
+    }
+
+    public Car updateCarById(Long id, Car expected) {
+        return new Car();
     }
 }

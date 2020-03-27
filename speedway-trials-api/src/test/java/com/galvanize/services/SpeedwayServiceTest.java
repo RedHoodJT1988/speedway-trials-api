@@ -6,7 +6,6 @@ import com.galvanize.entities.Status;
 import com.galvanize.repositories.CarRepository;
 import com.galvanize.repositories.DriverRepository;
 import com.galvanize.repositories.RaceRepository;
-import com.sun.scenario.effect.impl.sw.java.JSWEffectPeer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -62,7 +61,7 @@ public class SpeedwayServiceTest {
         SpeedwayService speedwayService = new SpeedwayService(driverRepository, carRepository, raceRepository);
         Driver expected = speedwayService.createDriver(new Driver("Paul", "Bethany", 55, "Vision"));
         expected.setLastName("Blart");
-        speedwayService.updateDriver(expected, expected.getId());
+        speedwayService.updateDriverById(expected, expected.getId());
         assertEquals(expected, speedwayService.findDriverById(expected.getId()));
     }
 
@@ -96,5 +95,13 @@ public class SpeedwayServiceTest {
         List<Car> expectedCars = new ArrayList<>();
         expectedCars.add(expected);
         assertEquals(expectedCars, speedwayService.findAllCars());
+    }
+
+    @Test
+    void updateCarById(){
+        SpeedwayService speedwayService = new SpeedwayService(driverRepository, carRepository, raceRepository);
+        Car expected = speedwayService.createCar(new Car("Bullet", "Mustang", 2200, 53, Status.AVAILABLE, 200));
+        expected.setNickName("Different Nickname");
+        assertEquals(expected, speedwayService.updateCarById(expected.getId(), expected));
     }
 }

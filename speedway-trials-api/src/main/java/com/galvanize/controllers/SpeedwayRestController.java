@@ -32,7 +32,7 @@ public class SpeedwayRestController {
     }
 
     @PutMapping("/driver/{id}")
-    public Driver updateDriver(@PathVariable Long id, @RequestBody Driver driver){ return speedwayService.updateDriver(driver, id);}
+    public Driver updateDriver(@PathVariable Long id, @RequestBody Driver driver){ return speedwayService.updateDriverById(driver, id);}
 
     @DeleteMapping("driver/{id}")
     public void delteteDriverById(@PathVariable Long id){ speedwayService.deleteById(id); }
