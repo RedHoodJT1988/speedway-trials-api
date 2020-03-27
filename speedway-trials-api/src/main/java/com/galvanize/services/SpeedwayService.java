@@ -37,7 +37,7 @@ public class SpeedwayService {
     public Driver updateDriverById(Driver expected, Long id) {
         Driver databaseDriver = findDriverById(id);
         databaseDriver.update(expected);
-        return driverRepository.save(databaseDriver);
+        return createDriver(databaseDriver);
     }
 
     public void deleteDriverById(Long id) {
@@ -59,7 +59,7 @@ public class SpeedwayService {
     public Car updateCarById(Long id, Car car) {
         Car databaseCar = findCarById(id);
         databaseCar.update(car);
-        return carRepository.save(car);
+        return createCar(car);
     }
 
     public void deleteCarById(Long id) {
@@ -79,6 +79,8 @@ public class SpeedwayService {
     }
 
     public Race updateRaceById(Long id, Race race) {
-        return new Race();
+        Race databaseRace = findRaceById(id);
+        databaseRace.update(race);
+        return createRace(databaseRace);
     }
 }
