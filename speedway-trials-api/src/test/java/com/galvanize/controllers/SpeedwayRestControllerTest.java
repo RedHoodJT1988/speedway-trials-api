@@ -86,16 +86,16 @@ class SpeedwayRestControllerTest {
                 .andExpect(status().isOk());
     }
 
-//    @Test
-//    void createCar() throws Exception{
-//        Car car = new Car();
-//        String json = objectMapper.writeValueAsString(car);
-//        car.setId(1L);
-//
-//        when(speedwayService.createCar(ArgumentMatchers.any(Car.class))).thenReturn(car);
-//
-//        mockMvc.perform(post("/api/speedway/car/").content(json).contentType(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk())
-//                .andExpect(jsonPath("$.id").value(car.getId()));
-//    }
+    @Test
+    void createCar() throws Exception{
+        Car car = new Car();
+        String json = objectMapper.writeValueAsString(car);
+        car.setId(1L);
+
+        when(speedwayService.createCar(ArgumentMatchers.any(Car.class))).thenReturn(car);
+
+        mockMvc.perform(post("/api/speedway/car/").content(json).contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(car.getId()));
+    }
 }
