@@ -72,4 +72,9 @@ public class SpeedwayRestController {
     public Race findRaceById(@PathVariable Long id){
         return speedwayService.findRaceById(id);
     }
+
+    @GetMapping("/race")
+    public List<Race> findAllRaces(){
+        return speedwayService.findAllRaces();
+    }
 }
