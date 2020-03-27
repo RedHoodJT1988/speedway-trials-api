@@ -98,4 +98,14 @@ class SpeedwayRestControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(car.getId()));
     }
+
+    @Test
+    void findCar() throws Exception {
+        Car car = new Car();
+        car.setId(1L);
+        when(speedwayService.findCarById(1L)).thenReturn(car);
+        mockMvc.perform(get("/api/speedway/car/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(car.getId()));
+    }
 }

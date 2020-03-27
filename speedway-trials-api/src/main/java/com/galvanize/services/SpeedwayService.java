@@ -46,4 +46,8 @@ public class SpeedwayService {
     public Car createCar(Car car) {
         return carRepository.save(car);
     }
+
+    public Car findCarById(Long id) {
+        return carRepository.findById(id).orElse(null);
+    }
 }

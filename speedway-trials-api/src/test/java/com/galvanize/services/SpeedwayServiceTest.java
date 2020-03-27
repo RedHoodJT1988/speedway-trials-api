@@ -6,6 +6,7 @@ import com.galvanize.entities.Status;
 import com.galvanize.repositories.CarRepository;
 import com.galvanize.repositories.DriverRepository;
 import com.galvanize.repositories.RaceRepository;
+import com.sun.scenario.effect.impl.sw.java.JSWEffectPeer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -79,5 +80,12 @@ public class SpeedwayServiceTest {
         Car expected = new Car("Bullet", "Mustang", 2200, 53, Status.AVAILABLE, 200);
 
         assertEquals(expected, speedwayService.createCar(expected));
+    }
+
+    @Test
+    void findCarById(){
+        SpeedwayService service = new SpeedwayService(driverRepository, carRepository, raceRepository);
+        Car expected = service.createCar(new Car("Bullet", "Mustang", 2200, 53, Status.AVAILABLE, 200));
+        assertEquals(expected, service.findCarById(expected.getId()));
     }
 }
