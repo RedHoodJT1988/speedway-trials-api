@@ -140,4 +140,12 @@ public class SpeedwayServiceTest {
         expectedRaces.add(expected);
         assertEquals(expectedRaces, speedwayService.findAllRaces());
     }
+
+    @Test
+    void updateRaceById(){
+        SpeedwayService speedwayService = new SpeedwayService(driverRepository, carRepository, raceRepository);
+        Race expected = speedwayService.createRace(new Race("Grand Prix", "Finals", LocalDate.now(), "00:00:01", 404L, new ArrayList<>()));
+        expected.setBestTime("00:00:00");
+        assertEquals(expected, speedwayService.updateRaceById(expected.getId(), expected));
+    }
 }

@@ -77,4 +77,8 @@ public class SpeedwayService {
     public List<Race> findAllRaces() {
         return raceRepository.findAll();
     }
+
+    public Race updateRaceById(Long id, Race race) {
+        return new Race();
+    }
 }

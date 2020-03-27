@@ -171,4 +171,15 @@ class SpeedwayRestControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value(expected.getId()));
     }
+
+    @Test
+    void updateRaceById() throws Exception{
+        Race expected = new Race();
+        String json = objectMapper.writeValueAsString(expected);
+        expected.setId(1L);
+        when(speedwayService.updateRaceById(ArgumentMatchers.anyLong(), ArgumentMatchers.any(Race.class))).thenReturn(expected);
+        mockMvc.perform(put("/api/speedway/race/1").content(json).contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(expected.getId()));
+    }
 }
