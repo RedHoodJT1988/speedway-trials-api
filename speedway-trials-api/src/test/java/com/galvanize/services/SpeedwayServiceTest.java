@@ -124,4 +124,11 @@ public class SpeedwayServiceTest {
         race.setId(actualRace.getId());
         assertEquals(race, actualRace);
     }
+
+    @Test
+    void findRaceById(){
+        SpeedwayService speedwayService = new SpeedwayService(driverRepository, carRepository, raceRepository);
+        Race expected = speedwayService.createRace(new Race("Grand Prix", "Finals", LocalDate.now(), "00:00:01", 404L, new ArrayList<>()));
+        assertEquals(expected, speedwayService.findRaceById(expected.getId()));
+    }
 }

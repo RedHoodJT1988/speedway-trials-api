@@ -69,4 +69,8 @@ public class SpeedwayService {
     public Race createRace(Race race) {
         return raceRepository.save(race);
     }
+
+    public Race findRaceById(Long id) {
+        return raceRepository.findById(id).orElse(null);
+    }
 }
