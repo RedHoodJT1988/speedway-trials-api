@@ -77,4 +77,14 @@ public class SpeedwayRestController {
     public List<Race> findAllRaces(){
         return speedwayService.findAllRaces();
     }
+
+    @PutMapping("/race/{id}")
+    public Race updateRaceById(@PathVariable Long id, @RequestBody Race race){
+        return speedwayService.updateRaceById(id, race);
+    }
+
+    @DeleteMapping("/race/{id}")
+    public void deleteRaceById(@PathVariable Long id){
+        speedwayService.deleteCarById(id);
+    }
 }
