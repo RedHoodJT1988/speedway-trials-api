@@ -56,4 +56,9 @@ public class SpeedwayRestController {
     public Car updateCarById(@PathVariable Long id, @RequestBody Car car){
         return speedwayService.updateCarById(id, car);
     }
+
+    @DeleteMapping("/car/{id}")
+    public void deleteCarById(@PathVariable Long id){
+        speedwayService.deleteCarById(id);
+    }
 }
