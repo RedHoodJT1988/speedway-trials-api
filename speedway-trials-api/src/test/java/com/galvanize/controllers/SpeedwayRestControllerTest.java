@@ -182,4 +182,10 @@ class SpeedwayRestControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(expected.getId()));
     }
+
+    @Test
+    void deleteRaceById() throws Exception{
+        mockMvc.perform(delete("/api/speedway/race/1"))
+                .andExpect(status().isOk());
+    }
 }

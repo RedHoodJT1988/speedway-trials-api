@@ -83,4 +83,8 @@ public class SpeedwayService {
         databaseRace.update(race);
         return createRace(databaseRace);
     }
+
+    public void deleteRaceById(Long id) {
+        raceRepository.deleteById(id);
+    }
 }
