@@ -88,4 +88,13 @@ public class SpeedwayServiceTest {
         Car expected = service.createCar(new Car("Bullet", "Mustang", 2200, 53, Status.AVAILABLE, 200));
         assertEquals(expected, service.findCarById(expected.getId()));
     }
+
+    @Test
+    void findAllCars(){
+        SpeedwayService speedwayService = new SpeedwayService(driverRepository, carRepository, raceRepository);
+        Car expected = speedwayService.createCar(new Car("Bullet", "Mustang", 2200, 53, Status.AVAILABLE, 200));
+        List<Car> expectedCars = new ArrayList<>();
+        expectedCars.add(expected);
+        assertEquals(expectedCars, speedwayService.findAllCars());
+    }
 }

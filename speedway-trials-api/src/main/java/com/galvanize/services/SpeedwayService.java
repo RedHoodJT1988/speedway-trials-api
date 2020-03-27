@@ -50,4 +50,8 @@ public class SpeedwayService {
     public Car findCarById(Long id) {
         return carRepository.findById(id).orElse(null);
     }
+
+    public List<Car> findAllCars() {
+        return carRepository.findAll();
+    }
 }
