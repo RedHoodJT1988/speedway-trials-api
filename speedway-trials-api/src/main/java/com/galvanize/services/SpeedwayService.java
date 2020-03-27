@@ -55,7 +55,9 @@ public class SpeedwayService {
         return carRepository.findAll();
     }
 
-    public Car updateCarById(Long id, Car expected) {
-        return new Car();
+    public Car updateCarById(Long id, Car car) {
+        Car databaseCar = findCarById(id);
+        databaseCar.update(car);
+        return carRepository.save(car);
     }
 }
