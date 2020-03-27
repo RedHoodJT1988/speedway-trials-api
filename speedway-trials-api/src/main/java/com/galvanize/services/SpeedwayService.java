@@ -73,4 +73,8 @@ public class SpeedwayService {
     public Race findRaceById(Long id) {
         return raceRepository.findById(id).orElse(null);
     }
+
+    public List<Race> findAllRaces() {
+        return raceRepository.findAll();
+    }
 }

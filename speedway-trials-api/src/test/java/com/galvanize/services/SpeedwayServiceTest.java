@@ -131,4 +131,13 @@ public class SpeedwayServiceTest {
         Race expected = speedwayService.createRace(new Race("Grand Prix", "Finals", LocalDate.now(), "00:00:01", 404L, new ArrayList<>()));
         assertEquals(expected, speedwayService.findRaceById(expected.getId()));
     }
+
+    @Test
+    void findAllRaces(){
+        SpeedwayService speedwayService = new SpeedwayService(driverRepository, carRepository, raceRepository);
+        Race expected = speedwayService.createRace(new Race("Grand Prix", "Finals", LocalDate.now(), "00:00:01", 404L, new ArrayList<>()));
+        List<Race> expectedRaces = new ArrayList<>();
+        expectedRaces.add(expected);
+        assertEquals(expectedRaces, speedwayService.findAllRaces());
+    }
 }

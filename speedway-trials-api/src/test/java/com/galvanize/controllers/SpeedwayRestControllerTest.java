@@ -159,4 +159,16 @@ class SpeedwayRestControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(expected.getId()));
     }
+
+    @Test
+    void findAllRaces() throws Exception{
+        Race expected = new Race();
+        expected.setId(1L);
+        List<Race> expectedRaces = new ArrayList<>();
+        expectedRaces.add(expected);
+        when(speedwayService.findAllRaces()).thenReturn(expectedRaces);
+        mockMvc.perform(get("/api/speedway/race"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id").value(expected.getId()));
+    }
 }
