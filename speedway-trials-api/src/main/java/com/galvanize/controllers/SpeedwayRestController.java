@@ -2,6 +2,7 @@ package com.galvanize.controllers;
 
 import com.galvanize.entities.Car;
 import com.galvanize.entities.Driver;
+import com.galvanize.entities.Race;
 import com.galvanize.services.SpeedwayService;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,5 +61,10 @@ public class SpeedwayRestController {
     @DeleteMapping("/car/{id}")
     public void deleteCarById(@PathVariable Long id){
         speedwayService.deleteCarById(id);
+    }
+
+    @PostMapping("/race")
+    public Race createRace(@RequestBody Race race){
+        return speedwayService.createRace(race);
     }
 }
