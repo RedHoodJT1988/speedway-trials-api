@@ -1,5 +1,6 @@
 package com.galvanize.services;
 
+import com.galvanize.entities.Car;
 import com.galvanize.entities.Driver;
 import com.galvanize.repositories.CarRepository;
 import com.galvanize.repositories.DriverRepository;
@@ -32,7 +33,7 @@ public class SpeedwayService {
         return driverRepository.findAll();
     }
 
-    public Driver update(Driver expected, Long id) {
+    public Driver updateDriver(Driver expected, Long id) {
         Driver databaseDriver = findDriverById(id);
         databaseDriver.update(expected);
         return driverRepository.save(databaseDriver);
@@ -40,5 +41,9 @@ public class SpeedwayService {
 
     public void deleteById(Long id) {
         driverRepository.deleteById(id);
+    }
+
+    public Car createCar(Car car) {
+        return carRepository.save(car);
     }
 }

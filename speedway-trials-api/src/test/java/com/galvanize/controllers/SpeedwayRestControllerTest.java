@@ -1,7 +1,7 @@
 package com.galvanize.controllers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.galvanize.entities.Car;
 import com.galvanize.entities.Driver;
 import com.galvanize.services.SpeedwayService;
 import org.junit.jupiter.api.Test;
@@ -18,8 +18,7 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.argThat;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -74,17 +73,29 @@ class SpeedwayRestControllerTest {
         String json = objectMapper.writeValueAsString(expected);
         expected.setId(1L);
 
-        when(speedwayService.update(ArgumentMatchers.any(Driver.class),ArgumentMatchers.anyLong())).thenReturn(expected);
+        when(speedwayService.updateDriver(ArgumentMatchers.any(Driver.class),ArgumentMatchers.anyLong())).thenReturn(expected);
 
         mockMvc.perform(put("/api/speedway/driver/1").content(json).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(expected.getId()));
     }
 
+    @Test
+    void deleteDriverById() throws Exception{
+        mockMvc.perform(delete("/api/speedway/driver/1"))
+                .andExpect(status().isOk());
+    }
+
 //    @Test
-//    void deleteDriverById() throws Exception{
-//        when(speedwayService.deleteById(ArgumentMatchers.anyLong()));
-//        mockMvc.perform(delete("/api/speed/driver/1"))
-//                .andExpect(status().isOk());
+//    void createCar() throws Exception{
+//        Car car = new Car();
+//        String json = objectMapper.writeValueAsString(car);
+//        car.setId(1L);
+//
+//        when(speedwayService.createCar(ArgumentMatchers.any(Car.class))).thenReturn(car);
+//
+//        mockMvc.perform(post("/api/speedway/car/").content(json).contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$.id").value(car.getId()));
 //    }
 }

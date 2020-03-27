@@ -25,6 +25,15 @@ public class Car {
     public Car() {
     }
 
+    public Car(String nickName, String model, int year, int driverId, Status status, int topSpeed) {
+        this.nickName = nickName;
+        this.model = model;
+        this.year = year;
+        this.driverId = driverId;
+        this.status = status;
+        this.topSpeed = topSpeed;
+    }
+
     public Car(Long id, String nickName, String model, int year, int driverId, Status status, int topSpeed) {
         this.id = id;
         this.nickName = nickName;

@@ -2,7 +2,6 @@ package com.galvanize.controllers;
 
 import com.galvanize.entities.Driver;
 import com.galvanize.services.SpeedwayService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,6 +31,8 @@ public class SpeedwayRestController {
     }
 
     @PutMapping("/driver/{id}")
-    public Driver updateDriver(@PathVariable Long id, @RequestBody Driver driver){ return speedwayService.update(driver, id);}
+    public Driver updateDriver(@PathVariable Long id, @RequestBody Driver driver){ return speedwayService.updateDriver(driver, id);}
 
+    @DeleteMapping("driver/{id}")
+    public void delteteDriverById(@PathVariable Long id){ speedwayService.deleteById(id); }
 }

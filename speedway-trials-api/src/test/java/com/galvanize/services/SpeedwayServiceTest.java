@@ -1,6 +1,8 @@
 package com.galvanize.services;
 
+import com.galvanize.entities.Car;
 import com.galvanize.entities.Driver;
+import com.galvanize.entities.Status;
 import com.galvanize.repositories.CarRepository;
 import com.galvanize.repositories.DriverRepository;
 import com.galvanize.repositories.RaceRepository;
@@ -59,7 +61,7 @@ public class SpeedwayServiceTest {
         SpeedwayService speedwayService = new SpeedwayService(driverRepository, carRepository, raceRepository);
         Driver expected = speedwayService.createDriver(new Driver("Paul", "Bethany", 55, "Vision"));
         expected.setLastName("Blart");
-        speedwayService.update(expected, expected.getId());
+        speedwayService.updateDriver(expected, expected.getId());
         assertEquals(expected, speedwayService.findDriverById(expected.getId()));
     }
 
@@ -69,5 +71,13 @@ public class SpeedwayServiceTest {
         Driver expected = speedwayService.createDriver(new Driver("Paul", "Bethany", 55, "Vision"));
         speedwayService.deleteById(expected.getId());
         assertNull(speedwayService.findDriverById(expected.getId()));
+    }
+
+    @Test
+    void createCar(){
+        SpeedwayService speedwayService = new SpeedwayService(driverRepository, carRepository, raceRepository);
+        Car expected = new Car("Bullet", "Mustang", 2200, 53, Status.AVAILABLE, 200);
+
+        assertEquals(expected, speedwayService.createCar(expected));
     }
 }
