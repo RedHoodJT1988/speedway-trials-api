@@ -67,4 +67,9 @@ public class SpeedwayRestController {
     public Race createRace(@RequestBody Race race){
         return speedwayService.createRace(race);
     }
+
+    @GetMapping("/race/{id}")
+    public Race findRaceById(@PathVariable Long id){
+        return speedwayService.findRaceById(id);
+    }
 }
