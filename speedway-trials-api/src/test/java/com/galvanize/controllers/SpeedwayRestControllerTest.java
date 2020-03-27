@@ -3,6 +3,7 @@ package com.galvanize.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.galvanize.entities.Car;
 import com.galvanize.entities.Driver;
+import com.galvanize.entities.Race;
 import com.galvanize.services.SpeedwayService;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
@@ -136,5 +137,16 @@ class SpeedwayRestControllerTest {
     void deleteCarById() throws Exception{
         mockMvc.perform(delete("/api/speedway/car/1"))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    void createRace() throws Exception{
+        Race race = new Race();
+        String json = objectMapper.writeValueAsString(race);
+        race.setId(1L);
+        when(speedwayService.createRace(ArgumentMatchers.any(Race.class))).thenReturn(race);
+        mockMvc.perform(post("/api/speedway/race").content(json).contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(race.getId()));
     }
 }

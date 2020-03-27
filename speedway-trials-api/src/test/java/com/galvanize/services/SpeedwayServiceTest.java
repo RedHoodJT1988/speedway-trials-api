@@ -2,6 +2,7 @@ package com.galvanize.services;
 
 import com.galvanize.entities.Car;
 import com.galvanize.entities.Driver;
+import com.galvanize.entities.Race;
 import com.galvanize.entities.Status;
 import com.galvanize.repositories.CarRepository;
 import com.galvanize.repositories.DriverRepository;
@@ -12,7 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -111,5 +114,14 @@ public class SpeedwayServiceTest {
         Car carToBeDeleted = speedwayService.createCar(new Car("Bullet", "Mustang", 2200, 53, Status.AVAILABLE, 200));
         speedwayService.deleteCarById(carToBeDeleted.getId());
         assertNull(speedwayService.findCarById(carToBeDeleted.getId()));
+    }
+
+    @Test
+    void createRace(){
+        SpeedwayService speedwayService = new SpeedwayService(driverRepository, carRepository, raceRepository);
+        Race race = new Race("Grand Prix", "Finals", LocalDate.now(), "00:00:01", 404L, new ArrayList<>());
+        Race actualRace = speedwayService.createRace(race);
+        race.setId(actualRace.getId());
+        assertEquals(race, actualRace);
     }
 }

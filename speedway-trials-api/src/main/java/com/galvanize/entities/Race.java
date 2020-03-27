@@ -1,7 +1,7 @@
 package com.galvanize.entities;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -15,7 +15,7 @@ public class Race {
     @Column
     String category;
     @Column
-    Date date;
+    LocalDate date;
     @Column
     String bestTime;
     @Column
@@ -26,7 +26,16 @@ public class Race {
     public Race() {
     }
 
-    public Race(Long id, String name, String category, Date date, String bestTime, Long winnerId, List<Driver> participants) {
+    public Race(String name, String category, LocalDate date, String bestTime, Long winnerId, List<Driver> participants) {
+        this.name = name;
+        this.category = category;
+        this.date = date;
+        this.bestTime = bestTime;
+        this.winnerId = winnerId;
+        this.participants = participants;
+    }
+
+    public Race(Long id, String name, String category, LocalDate date, String bestTime, Long winnerId, List<Driver> participants) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -60,11 +69,11 @@ public class Race {
         this.category = category;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

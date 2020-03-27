@@ -2,6 +2,7 @@ package com.galvanize.services;
 
 import com.galvanize.entities.Car;
 import com.galvanize.entities.Driver;
+import com.galvanize.entities.Race;
 import com.galvanize.repositories.CarRepository;
 import com.galvanize.repositories.DriverRepository;
 import com.galvanize.repositories.RaceRepository;
@@ -63,5 +64,9 @@ public class SpeedwayService {
 
     public void deleteCarById(Long id) {
         carRepository.deleteById(id);
+    }
+
+    public Race createRace(Race race) {
+        return raceRepository.save(race);
     }
 }
