@@ -39,7 +39,7 @@ public class SpeedwayService {
         return driverRepository.save(databaseDriver);
     }
 
-    public void deleteById(Long id) {
+    public void deleteDriverById(Long id) {
         driverRepository.deleteById(id);
     }
 
@@ -59,5 +59,9 @@ public class SpeedwayService {
         Car databaseCar = findCarById(id);
         databaseCar.update(car);
         return carRepository.save(car);
+    }
+
+    public void deleteCarById(Long id) {
+        carRepository.deleteById(id);
     }
 }

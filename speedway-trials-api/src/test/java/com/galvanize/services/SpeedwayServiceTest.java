@@ -69,7 +69,7 @@ public class SpeedwayServiceTest {
     void deleteDriverById(){
         SpeedwayService speedwayService = new SpeedwayService(driverRepository, carRepository, raceRepository);
         Driver expected = speedwayService.createDriver(new Driver("Paul", "Bethany", 55, "Vision"));
-        speedwayService.deleteById(expected.getId());
+        speedwayService.deleteDriverById(expected.getId());
         assertNull(speedwayService.findDriverById(expected.getId()));
     }
 
@@ -103,5 +103,13 @@ public class SpeedwayServiceTest {
         Car expected = speedwayService.createCar(new Car("Bullet", "Mustang", 2200, 53, Status.AVAILABLE, 200));
         expected.setNickName("Different Nickname");
         assertEquals(expected, speedwayService.updateCarById(expected.getId(), expected));
+    }
+
+    @Test
+    void deleteCarByID(){
+        SpeedwayService speedwayService = new SpeedwayService(driverRepository, carRepository, raceRepository);
+        Car carToBeDeleted = speedwayService.createCar(new Car("Bullet", "Mustang", 2200, 53, Status.AVAILABLE, 200));
+        speedwayService.deleteCarById(carToBeDeleted.getId());
+        assertNull(speedwayService.findCarById(carToBeDeleted.getId()));
     }
 }

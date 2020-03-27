@@ -35,7 +35,7 @@ public class SpeedwayRestController {
     public Driver updateDriver(@PathVariable Long id, @RequestBody Driver driver){ return speedwayService.updateDriverById(driver, id);}
 
     @DeleteMapping("driver/{id}")
-    public void delteteDriverById(@PathVariable Long id){ speedwayService.deleteById(id); }
+    public void delteteDriverById(@PathVariable Long id){ speedwayService.deleteDriverById(id); }
 
     @PostMapping("/car")
     public Car createCar(@RequestBody Car car){
