@@ -1,6 +1,7 @@
 package com.galvanize.entities;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name="cars")
@@ -23,6 +24,15 @@ public class Car {
     int topSpeed;
 
     public Car() {
+    }
+
+    public Car(String nickName, String model, int year, int driverId, Status status, int topSpeed) {
+        this.nickName = nickName;
+        this.model = model;
+        this.year = year;
+        this.driverId = driverId;
+        this.status = status;
+        this.topSpeed = topSpeed;
     }
 
     public Car(Long id, String nickName, String model, int year, int driverId, Status status, int topSpeed) {
@@ -89,5 +99,35 @@ public class Car {
 
     public void setTopSpeed(int topSpeed) {
         this.topSpeed = topSpeed;
+    }
+
+
+    public void update(Car expected) {
+        if(expected.getId()!=0)this.setId(expected.getId());
+        if(expected.getDriverId()!=0)this.setDriverId(expected.getDriverId());
+        if(expected.getModel()!=null)this.setModel(expected.getModel());
+        if(expected.getNickName()!=null)this.setNickName(expected.getNickName());
+        if(expected.getYear()!=0)this.setYear(expected.getYear());
+        if(expected.getStatus()!=null)this.setStatus(expected.getStatus());
+        if(expected.getTopSpeed()!=0)this.setTopSpeed(expected.getTopSpeed());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return getYear() == car.getYear() &&
+                getDriverId() == car.getDriverId() &&
+                getTopSpeed() == car.getTopSpeed() &&
+                Objects.equals(getId(), car.getId()) &&
+                Objects.equals(getNickName(), car.getNickName()) &&
+                Objects.equals(getModel(), car.getModel()) &&
+                getStatus() == car.getStatus();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getNickName(), getModel(), getYear(), getDriverId(), getStatus(), getTopSpeed());
     }
 }
