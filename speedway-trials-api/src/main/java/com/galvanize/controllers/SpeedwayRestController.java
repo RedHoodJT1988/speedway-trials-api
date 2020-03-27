@@ -51,4 +51,9 @@ public class SpeedwayRestController {
     public List<Car> findAllCars(){
         return speedwayService.findAllCars();
     }
+
+    @PutMapping("/car/{id}")
+    public Car updateCarById(@PathVariable Long id, @RequestBody Car car){
+        return speedwayService.updateCarById(id, car);
+    }
 }
