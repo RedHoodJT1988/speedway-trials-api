@@ -16,6 +16,9 @@ public class SpeedwayService {
     CarRepository carRepository;
     DriverRepository driverRepository;
 
+    // LAH: One improvement here would be to have a separate service for each object type so they are
+    // further decoupled. So DriverService interacts with the DriverRepository, CarService interacts with the
+    // CarRepository...etc, which will also make it easier to mock those dependencies
     public SpeedwayService(DriverRepository driverRepository, CarRepository carRepository, RaceRepository raceRepository) {
         this.driverRepository = driverRepository;
         this.carRepository = carRepository;

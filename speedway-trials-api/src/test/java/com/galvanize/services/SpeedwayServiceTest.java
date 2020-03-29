@@ -53,6 +53,7 @@ public class SpeedwayServiceTest {
     @Test
     void findAllDrivers() {
         SpeedwayService speedwayService = new SpeedwayService(driverRepository, carRepository, raceRepository);
+        // LAH: It's also a good practice to vary your test data, so a diferent name and age
         Driver expected = speedwayService.createDriver(new Driver("Paul", "Bethany", 55, "Vision"));
         List<Driver> drivers = new ArrayList<>();
         drivers.add(expected);

@@ -5,6 +5,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// LAH: This test is not needed since this functionality is already
+// included in the JpaRepository
 @SpringBootTest
 public class DriverTest {
     @Test

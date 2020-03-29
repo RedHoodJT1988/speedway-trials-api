@@ -17,6 +17,9 @@ public class SpeedwayRestController {
         this.speedwayService = speedwayService;
     }
 
+    // LAH: For controllers, one good wrapper class to use is ResponseEntity, so there's a consistent return
+    // object. So this endpoint for instance would return ResponseEntity<Driver>
+    // https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/ResponseEntity.html
     @PostMapping("/driver")
     public Driver createDriver(@RequestBody Driver driver) {
         return speedwayService.createDriver(driver);
