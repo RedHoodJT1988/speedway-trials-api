@@ -101,7 +101,12 @@ public class Car {
         this.topSpeed = topSpeed;
     }
 
-
+    /*
+    * LAH: This method would update this object instance, but would not get persisted to the actual database.
+    * Use the repository to handle updates to a specific entity. The save function in your JpaRepository will
+    * handle updates as well:
+    * https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/CrudRepository.html#save-S-
+     */
     public void update(Car expected) {
         if(expected.getId()!=0)this.setId(expected.getId());
         if(expected.getDriverId()!=0)this.setDriverId(expected.getDriverId());
